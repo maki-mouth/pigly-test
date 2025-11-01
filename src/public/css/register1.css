@@ -1,0 +1,96 @@
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+/* STEP表示 */
+.step {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* フォーム要素の共通スタイル（各ステップのフォームで利用） */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* 入力フィールドの共通スタイル */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: #a8e0f9;
+    outline: none;
+}
+/*ここまで共通スタイル*/
+
+/* バリデーションエラーメッセージのスタイル (画像再現のため赤色に) */
+.error-message {
+    color: #ff3366;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+/* アクションボタンコンテナ */
+.action-buttons {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* 「次に進む」ボタンのスタイル */
+.next-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    /* 画像の淡いグラデーションボタンを再現 */
+    background-image: linear-gradient(to right, #e0b4d4 0%, #b8a6d4 100%);
+    box-shadow: 0 4px 15px rgba(184, 166, 212, 0.5);
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.next-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* ログインリンクのスタイル */
+.login-link {
+    display: block;
+    font-size: 14px;
+    color: #b8a6d4;
+    /* ロゴと同じ薄紫系の色 */
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}

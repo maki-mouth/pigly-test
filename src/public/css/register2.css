@@ -1,0 +1,61 @@
+/* register2.css */
+
+/* STEP表示 */
+.step {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+/* 入力とサフィックス(kg)を囲むコンテナ */
+.input-with-suffix .input-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* 入力フィールドの幅を調整 */
+.input-with-suffix input {
+    /* app.cssで定義されたinputスタイルを引き継ぎつつ、幅を調整 */
+    flex-grow: 1;
+    margin-right: 10px;
+    /* kgとの間隔 */
+}
+
+/* サフィックス(kg)のスタイル */
+.input-with-suffix .suffix {
+    font-size: 16px;
+    font-weight: 600;
+    color: #666;
+    white-space: nowrap;
+    /* 折り返しを防ぐ */
+}
+
+/* アクションボタンコンテナ */
+.action-buttons {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* 「アカウント作成」ボタンのスタイル */
+.create-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    /* 画像の淡いグラデーションボタンを再現 */
+    background-image: linear-gradient(to right, #e0b4d4 0%, #b8a6d4 100%);
+    box-shadow: 0 4px 15px rgba(184, 166, 212, 0.5);
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.create-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
