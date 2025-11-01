@@ -6,11 +6,12 @@
 
 @section('content')
     <h2 class="title">新規会員登録</h2>
+
     <p class="step">STEP 2. 体重データの入力</p>
 
-    <form action="/register/step2" method="POST">
+    <form action="" method="POST">
         @csrf
-        
+
         <div class="form-group input-with-suffix">
             <label for="current_weight">現在の体重</label>
             <div class="input-wrapper">
@@ -18,7 +19,8 @@
                 <span class="suffix">kg</span>
             </div>
         </div>
-        
+
+
         <div class="form-group input-with-suffix">
             <label for="target_weight">目標の体重</label>
             <div class="input-wrapper">

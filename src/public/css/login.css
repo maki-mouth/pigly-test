@@ -1,0 +1,61 @@
+/* login.css */
+
+/* ページタイトル (共通の .title ではなく、login.blade.phpで h2.page-title と定義する場合) */
+.page-title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    /* フォームとの間隔を空ける */
+}
+
+/* バリデーションエラーメッセージのスタイル */
+.error-message {
+    color: #ff3366;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+/* アクションボタンコンテナ */
+.action-buttons {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* 「ログイン」ボタンのスタイル */
+.login-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    /* 画像の淡いグラデーションボタンを再現 */
+    background-image: linear-gradient(to right, #e0b4d4 0%, #b8a6d4 100%);
+    box-shadow: 0 4px 15px rgba(184, 166, 212, 0.5);
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.login-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* アカウント作成リンクのスタイル */
+.register-link {
+    display: block;
+    font-size: 14px;
+    color: #b8a6d4;
+    /* ロゴと同じ薄紫系の色 */
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}

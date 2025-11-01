@@ -12,74 +12,34 @@ class WeightLogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function register1()
+    {
+        return view('register1');
+    }
+
     public function register2()
     {
         return view('register2');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function login()
     {
-        //
+        return view('login');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function log()
     {
-        //
+        return view('log');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\WeightLog  $weightLog
-     * @return \Illuminate\Http\Response
-     */
-    public function show(WeightLog $weightLog)
+    public function detail()
     {
-        //
+        return view('detail');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\WeightLog  $weightLog
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(WeightLog $weightLog)
+    public function target()
     {
-        //
+        return view('target');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\WeightLog  $weightLog
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, WeightLog $weightLog)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\WeightLog  $weightLog
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(WeightLog $weightLog)
-    {
-        //
-    }
 }
