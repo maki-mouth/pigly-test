@@ -18,11 +18,9 @@
                 <a href="{{ route('target') }}" class="setting-link" title="目標体重設定">
                     <i class="fas fa-cog"></i> 目標体重設定
                 </a>
-                <form action="" method="POST" style="display: inline;">
+                <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="logout-button">
-                        <i class="fas fa-sign-out-alt"></i> ログアウト
-                    </button>
+                    <button class="logout-button" type="submit">ログアウト</button>
                 </form>
             </nav>
         </div>

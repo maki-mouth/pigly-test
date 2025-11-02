@@ -29,6 +29,7 @@ class WeightLogController extends Controller
 
     public function log()
     {
+
         return view('log');
     }
 

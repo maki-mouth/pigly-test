@@ -20,7 +20,7 @@ public function up(): void
             $table->decimal('weight', 4, 1);
             $table->integer('calories');
             $table->time('exercise_time');
-            $table->text('exercise_content');
+            $table->text('exercise_content')->nullable();
             $table->timestamps();
         });
     }

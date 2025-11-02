@@ -9,15 +9,15 @@
         <div class="summary-area">
             <div class="summary-card">
                 <p class="summary-label">目標体重</p>
-                <p class="summary-value">45.0<span class="unit">kg</span></p>
+                <p class="summary-value"><span class="unit">kg</span></p>
             </div>
             <div class="summary-card">
                 <p class="summary-label">目標まで</p>
-                <p class="summary-value negative-value">-1.5<span class="unit">kg</span></p>
+                <p class="summary-value negative-value"><span class="unit">kg</span></p>
             </div>
             <div class="summary-card">
                 <p class="summary-label">最新体重</p>
-                <p class="summary-value">46.5<span class="unit">kg</span></p>
+                <p class="summary-value"><span class="unit">kg</span></p>
             </div>
         </div>
 
