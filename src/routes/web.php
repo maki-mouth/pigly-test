@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WeightLogController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TargetController;
 use Illuminate\Support\Facades\Auth; // ★ Authファサードを追加
 use Illuminate\Http\Request; // ★★★ この行を追加 ★★★
 
@@ -23,8 +24,12 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     // 体重ログ関連のルート
     Route::get('/weight_logs', [WeightLogController::class, 'log'])->name('log');
-    Route::get('/weight_logs/goal_setting', [WeightLogController::class, 'target'])->name('target');
+    Route::post('/weight_logs/create', [WeightLogController::class, 'store'])->name('store');
+    Route::get('/weight_logs/goal_setting', [TargetController::class, 'edit'])->name('target');
+    Route::put('/weight_logs/goal_setting', [TargetController::class, 'update'])->name('target.update');
     Route::get('/weight_logs/{weightLogId}', [WeightLogController::class, 'detail'])->name('detail');
+    Route::put('/weight_logs/{weightLogId}/update', [WeightLogController::class, 'update'])->name('update');
+    Route::delete('/weight_logs/{weightLogId}/delete', [WeightLogController::class, 'destroy'])->name('destroy');
 
     // ★★★ 追記: ログアウト処理の明示的な定義 ★★★
     Route::post('/logout', function (Request $request) {

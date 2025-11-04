@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 @endsection
 
 @section('content')
@@ -9,40 +10,63 @@
         <div class="card log-card">
             <h1 class="page-title">Weight Log</h1>
 
-            <form action="" method="POST">
+            <form action="{{ route('update', $log->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
                     <label for="date">日付</label>
-                    <select id="date" name="date" class="date-select-field">
-                        <option value="2024-01-01" selected>2024年1月1日</option>
-                        </select>
+                    {{-- 【修正点2】セレクトボックスからinput[type=date]に変更し、ログの日付をバインド --}}
+                    <input id="date" type="date" name="date" class="date-select-field" 
+                        value="{{ old('date', $log->date) }}">
+                    @error('date')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="form-group input-with-suffix">
                     <label for="weight">体重</label>
                     <div class="input-wrapper">
-                        <input id="weight" type="number" name="weight" value="50.0" placeholder="体重を入力" step="0.1">
+                        {{-- 【修正点3】体重をバインド --}}
+                        <input id="weight" type="number" name="weight" 
+                            value="{{ old('weight', $log->weight) }}" 
+                            placeholder="体重を入力" step="0.1">
                         <span class="suffix">kg</span>
                     </div>
+                    @error('weight')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="form-group input-with-suffix">
                     <label for="calories">摂取カロリー</label>
                     <div class="input-wrapper">
-                        <input id="calories" type="number" name="calories" value="1200" placeholder="カロリーを入力">
+                        {{-- 【修正点4】カロリーをバインド --}}
+                        <input id="calories" type="number" name="calories" 
+                            value="{{ old('calories', $log->calories) }}" 
+                            placeholder="カロリーを入力">
                         <span class="suffix">cal</span>
                     </div>
+                    @error('calories')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="exercise_time">運動時間</label>
-                    <input id="exercise_time" type="time" name="exercise_time" value="00:00" step="1">
+                    <input type="text" id="exercise_time" name="exercise_time" placeholder="00:00" value="{{ old('exercise_time', $log->exercise_time) }}" step="60">
+                    @error('exercise_time')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
+
 
                 <div class="form-group">
                     <label for="exercise_content">運動内容</label>
-                    <textarea id="exercise_content" name="exercise_content" rows="4" placeholder="運動内容を追加"></textarea>
+                    {{-- 【修正点6】運動内容をバインド --}}
+                    <textarea id="exercise_content" name="exercise_content" rows="4" placeholder="運動内容を追加">{{ old('exercise_content', $log->exercise_content) }}</textarea>
+                    @error('exercise_content')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="action-buttons-footer">
@@ -50,13 +74,13 @@
 
                     <button type="submit" class="update-button">更新</button>
 
-                    <button type="button" class="delete-button" onclick="document.getElementById('delete-form').submit()">
+                    <button type="button" class="delete-button" onclick="if(confirm('本当にこのログを削除しますか？')){ document.getElementById('delete-form').submit(); }">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </div>
             </form>
 
-            <form id="delete-form" action="" method="POST" style="display: none;">
+            <form id="delete-form" action="{{ route('destroy', $log->id) }}" method="POST" style="display: none;">
                 @csrf
                 @method('DELETE')
             </form>
