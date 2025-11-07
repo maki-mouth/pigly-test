@@ -5,14 +5,14 @@
 @endsection
 
 @section('content')
-    <h2 class="page-title">ログイン</h2>
+    <h2 class="title">ログイン</h2>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
         <div class="form-group">
             <label for="email">メールアドレス</label>
-            <input id="email" type="email" name="email" placeholder="名前を入力" value="{{ old('email') }}" required autofocus>
+            <input id="email" type="email" name="email" placeholder="メールアドレスを入力" value="{{ old('email') }}" required autofocus>
             @error('email')
                 <p class="error-message">{{ $message }}</p>
             @enderror
@@ -20,7 +20,7 @@
 
         <div class="form-group">
             <label for="password">パスワード</label>
-            <input id="password" type="password" name="password" placeholder="名前を入力" required>
+            <input id="password" type="password" name="password" placeholder="パスワードを入力" required>
             @error('password')
                 <p class="error-message">{{ $message }}</p>
             @enderror

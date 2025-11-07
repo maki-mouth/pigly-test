@@ -1,11 +1,12 @@
 .title {
-    font-size: 24px;
-    font-weight: 600;
+    font-family: 'Regular', serif;
+    font-size: 30px;
+    font-weight: 300;
     text-align: center;
     margin-top: 0;
-    margin-bottom: 5px;
+    margin-bottom: 30px;
 }
-/* STEP表示 */
+
 .step {
     font-size: 14px;
     color: #666;
@@ -13,7 +14,6 @@
     margin-bottom: 30px;
 }
 
-/* フォーム要素の共通スタイル（各ステップのフォームで利用） */
 .form-group {
     margin-bottom: 20px;
 }
@@ -25,7 +25,6 @@
     margin-bottom: 5px;
 }
 
-/* 入力フィールドの共通スタイル */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -43,23 +42,19 @@ input:focus {
     border-color: #a8e0f9;
     outline: none;
 }
-/*ここまで共通スタイル*/
 
-/* バリデーションエラーメッセージのスタイル (画像再現のため赤色に) */
 .error-message {
-    color: #ff3366;
+    color: #F65A5A;
     font-size: 12px;
     margin-top: 4px;
     margin-bottom: 0;
 }
 
-/* アクションボタンコンテナ */
 .action-buttons {
     text-align: center;
     margin-top: 40px;
 }
 
-/* 「次に進む」ボタンのスタイル */
 .next-button {
     width: 100%;
     padding: 12px;
@@ -69,7 +64,6 @@ input:focus {
     font-weight: 600;
     color: #ffffff;
     cursor: pointer;
-    /* 画像の淡いグラデーションボタンを再現 */
     background-image: linear-gradient(to right, #e0b4d4 0%, #b8a6d4 100%);
     box-shadow: 0 4px 15px rgba(184, 166, 212, 0.5);
     transition: all 0.3s ease;
@@ -81,12 +75,10 @@ input:focus {
     transform: translateY(-1px);
 }
 
-/* ログインリンクのスタイル */
 .login-link {
     display: block;
     font-size: 14px;
     color: #b8a6d4;
-    /* ロゴと同じ薄紫系の色 */
     text-decoration: none;
     margin-top: 10px;
 }

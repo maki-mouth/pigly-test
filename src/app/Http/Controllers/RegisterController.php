@@ -18,7 +18,6 @@ class RegisterController extends Controller
 {
     public function showRegister1()
     {
-        // セッションにSTEP 1のデータがあれば、それを渡す
         return view('register1', [
             'data' => session('registration_data.step1', [])
     ]);
@@ -26,17 +25,13 @@ class RegisterController extends Controller
 
     public function processRegister1(Register1Request $request)
     {
-        // バリデーション済みの安全なデータをセッションに一時保存
-        // $request->validated() がバリデーション済みのデータを返す
         session(['registration_data.step1' => $request->validated()]);
 
-        // 3. STEP 2へリダイレクト
         return redirect()->route('register2');
     }
 
     public function showRegister2()
     {
-        // STEP 1のデータがセッションに存在しない場合は戻す（不正アクセス対策）
         if (!session()->has('registration_data.step1')) {
             return redirect()->route('register1');
         }
@@ -46,10 +41,8 @@ class RegisterController extends Controller
 
     public function processRegister2(Register2Request $request)
     {
-        // STEP 1のデータを取得
         $step1Data = session('registration_data.step1');
         if (!$step1Data) {
-            // STEP 1のデータがない場合はエラーとしてSTEP 1に戻す
             session()->flash('error', '登録情報が見つかりません。最初からやり直してください。');
             return redirect()->route('register1');
         }
@@ -58,50 +51,41 @@ class RegisterController extends Controller
 
         $user = null;
 
-        // トランザクション処理: ユーザーと目標体重を同時に保存
         try {
 
             DB::transaction(function () use ($step1Data, $validatedData, &$user) {
-                
-                // 1. ユーザーを作成し、ログイン
+
                 $user = User::create([
                     'name' => $step1Data['name'],
                     'email' => $step1Data['email'],
                     'password' => Hash::make($step1Data['password']),
                 ]);
 
-
-                // 2. 目標体重を設定
                 WeightTarget::create([
                     'user_id' => $user->id,
-                    // $validatedData['target_weight'] で目標体重を取得
                     'target_weight' => $validatedData['target_weight'],
                 ]);
 
-                // 3. 初回体重ログを記録 (現在の体重を記録)
                 WeightLog::create([
                     'user_id' => $user->id,
-                    'date' => now()->toDateString(), // 今日の日付
-                    'weight' => $validatedData['current_weight'], // ★現在の体重を記録
+                    'date' => now()->toDateString(),
+                    'weight' => $validatedData['current_weight'],
                     'calories' => 0,
                     'exercise_time' => '00:00:00',
                     'exercise_content' => null,
                 ]);
             });
 
-            // ★★★ トランザクションが成功した後でログイン処理を実行 ★★★
             if ($user) {
                 Auth::login($user);
             }
 
             session()->forget('registration_data');
-            return redirect()->route('log'); 
+            return redirect()->route('log');
 
         } catch (\Exception $e) {
-            // 失敗: エラーメッセージを表示してSTEP 1に戻す
             session()->flash('error', 'ユーザー登録に失敗しました。再度お試しください。');
-            // 必要であればログに出力
-            \Log::error('Registration failed: ' . $e->getMessage()); 
+            \Log::error('Registration failed: ' . $e->getMessage());
             return redirect()->route('register1')->withInput();
         }
     }

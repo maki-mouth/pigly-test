@@ -5,25 +5,28 @@
 @endsection
 
 @section('content')
-    <main class="main-content"> 
-        
-        <div class="card setting-card"> 
+    <main class="main-content">
+
+        <div class="card setting-card">
             <h2 class="page-title">目標体重設定</h2>
-            
+
             <form action="{{ route('target.update') }}" method="POST">
                 @csrf
                 @method('PUT')
-                
+
                 <div class="form-group input-with-suffix target-input">
                     <div class="input-wrapper">
                         <input id="target_weight" type="number" name="target_weight" value="{{ old('target_weight', $goalWeight) }}" placeholder="目標体重を入力" step="0.1">
                         <span class="suffix">kg</span>
                     </div>
+                    @error('target_weight')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="action-buttons-footer setting-footer">
                     <a href="{{ route('log') }}" class="back-button">戻る</a>
-                    
+
                     <button type="submit" class="update-button">更新</button>
                 </div>
             </form>

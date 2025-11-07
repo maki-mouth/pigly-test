@@ -10,7 +10,6 @@
         <div class="summary-area">
             <div class="summary-card">
                 <p class="summary-label">目標体重</p>
-                {{-- 目標体重を表示。データがない場合は '--' --}}
                 <p class="summary-value">
                     {{ $goalWeight ?? '--' }}
                     <span class="unit">kg</span>
@@ -33,7 +32,6 @@
                     }
                 @endphp
 
-                {{-- 目標までの差分を表示 --}}
                 <p class="summary-value {{ $diffClass }}">
                     {{ $diffValue }}
                     <span class="unit">kg</span>
@@ -51,23 +49,17 @@
 
         <div class="data-section">
             <div class="control-bar">
-                {{-- =============================================== --}}
-                {{-- 【修正箇所】日付検索フォームを type="date" に変更 --}}
-                {{-- name="start_date" と name="end_date" に変更 --}}
-                {{-- =============================================== --}}
                 <form class="date-search-form" method="GET" action="{{ route('log') }}">
-                    <input type="date" name="start_date" class="date-select" 
+                    <input type="date" name="start_date" class="date-select"
                         value="{{ request('start_date') }}">
                     <span class="date-separator">〜</span>
-                    <input type="date" name="end_date" class="date-select" 
+                    <input type="date" name="end_date" class="date-select"
                         value="{{ request('end_date') }}">
                     <button type="submit" class="search-button">検索</button>
-                    {{-- 検索をリセットするためのボタンを追加 --}}
                     @if (request('start_date') || request('end_date'))
                         <a href="{{ route('log') }}" class="reset-button">リセット</a>
                     @endif
                 </form>
-                {{-- =============================================== --}}
                 <button type="button" id="open-modal-button" class="add-data-button">データ追加</button>
             </div>
 
@@ -83,10 +75,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- Controllerから渡された$weightLogsをループ処理 --}}
                         @forelse ($weightLogs as $log)
                         <tr>
-                            {{-- 日付 (CarbonでY/m/d形式に整形) --}}
+                            {{-- 日付 --}}
                             <td>{{ \Carbon\Carbon::parse($log->date)->format('Y/m/d') }}</td>
                             {{-- 体重 --}}
                             <td>{{ $log->weight }}<span class="unit-text">kg</span></td>
@@ -94,7 +85,6 @@
                             <td>{{ $log->calories }}<span class="unit-text">cal</span></td>
                             {{-- 運動時間 --}}
                             <td>{{ $log->exercise_time }}</td>
-                            {{-- 編集/削除ボタン --}}
                             <td>
                                 <a href="{{ route('detail', $log->id) }}" class="edit-icon"><i class="fas fa-pen"></i></a>
                             </td>
@@ -109,17 +99,14 @@
                     </tbody>
                 </table>
             </div>
-            
+
             {{-- ページネーションリンク --}}
             <div class="pagination-container">
-                {{ $weightLogs->links('pagination::simple-bootstrap-4') }}
+                {{ $weightLogs->links() }}
             </div>
         </div>
     </main>
 
-        {{-- ============================================= --}}
-    {{-- 体重ログ追加モーダルウィンドウ --}}
-    {{-- ============================================= --}}
     <div id="add-log-modal" class="modal-overlay @if ($errors->any()) active @endif">
         <div class="modal-content">
             <div class="modal-header">
@@ -129,7 +116,6 @@
                 </button>
             </div>
 
-            {{-- フォーム --}}
             <form action="{{ route('store') }}" method="POST" class="log-form">
                 @csrf
 
@@ -199,7 +185,7 @@
             const openButton = document.getElementById('open-modal-button');
             const closeButton = document.getElementById('close-modal-button');
             const cancelButton = document.getElementById('cancel-button');
-            
+
             // モーダルを開く
             if (openButton) {
                 openButton.addEventListener('click', function() {
@@ -220,7 +206,7 @@
             if (closeButton) {
                 closeButton.addEventListener('click', closeModal);
             }
-            
+
             // キャンセルボタン（閉じるボタンと同じ動作）
             if (cancelButton) {
                 cancelButton.addEventListener('click', closeModal);
@@ -234,9 +220,6 @@
                     }
                 });
             }
-
-            // バリデーションエラー時はモーダルが既に'active'クラスを持っているため、
-            // ページロード時に自動的に開きます。
         });
     </script>
 

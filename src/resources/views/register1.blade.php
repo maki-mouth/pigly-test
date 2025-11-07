@@ -8,14 +8,6 @@
     <h2 class="title">新規会員登録</h2>
 
     <p class="step">STEP 1. アカウント情報の登録</p>
-        <!-- ★★★ このエリアが必須です ★★★ -->
-    @if (session('error'))
-        <div class="alert alert-danger" role="alert">
-            {{ session('error') }}
-        </div>
-    @endif
-    <!-- ★★★ ここまで ★★★ -->
-
 
     <form action="{{ route('register1.post') }}" method="POST">
         @csrf

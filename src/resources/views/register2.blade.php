@@ -38,5 +38,6 @@
         <div class="action-buttons">
             <button type="submit" class="create-button">アカウント作成</button>
         </div>
+
     </form>
 @endsection

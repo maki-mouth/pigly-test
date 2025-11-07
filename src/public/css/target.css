@@ -1,34 +1,20 @@
-/* target_setting.css */
-
-/* -------------------------------------- */
-/* 1. ページ全体のレイアウト調整 */
-/* -------------------------------------- */
 body {
-    /* 詳細画面(log.css)と同じように、中央のカード形式に戻す */
     padding-top: 60px;
-    /* ヘッダーの高さ */
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: calc(100vh - 60px);
-    padding-top: 30px;
     padding-bottom: 30px;
 }
 
-/* メインコンテンツは中央に表示されるカードそのもの */
 .main-content {
-    /* app.css の .card スタイルを適用しつつ、固有の調整 */
     max-width: 450px;
     width: 100%;
-
-    /* カードのスタイルを直接適用するため、.card クラスを再定義 */
     background-color: #ffffff;
     border-radius: 15px;
     padding: 40px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
-
-/* 注意: HTML側の `div class="card setting-card"` で app.css の .card を使っても良い */
 
 .page-title {
     font-size: 24px;
@@ -37,10 +23,6 @@ body {
     margin-bottom: 30px;
     color: #333;
 }
-
-/* -------------------------------------- */
-/* 2. フォームとボタン (target_modal.cssから流用) */
-/* -------------------------------------- */
 
 .target-input {
     text-align: center;
@@ -62,10 +44,9 @@ body {
     font-size: 16px;
     font-weight: 600;
     color: #666;
-    margin-left: -5px;
+    margin-left: 5px;
 }
 
-/* フッターボタン配置 */
 .setting-footer {
     display: flex;
     justify-content: center;
@@ -82,7 +63,6 @@ body {
     border-radius: 20px;
 }
 
-/* 戻るボタンのスタイル */
 .setting-footer .back-button {
     background-color: #f0f0f0;
     border: 1px solid #ddd;
@@ -91,9 +71,15 @@ body {
     text-decoration: none;
 }
 
-/* 更新ボタンのスタイル */
 .setting-footer .update-button {
     background-image: linear-gradient(to right, #e0b4d4 0%, #b8a6d4 100%);
     border: none;
     color: #fff;
+}
+
+.error-message {
+    color: #F65A5A;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 0;
 }
